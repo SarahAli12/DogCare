@@ -32,6 +32,7 @@ public class DogCare
     public static void main (String[] args) throws Exception
     {
 
+        String name;
 
     }
 }
