@@ -7,7 +7,7 @@ import javax.imageio.*;
 import java.io.*;
 import java.util.Random;
 
-public class DogCare
+public class Master
 {
     static Console c = new Console ();
     static BufferedImage image = new BufferedImage (c.getWidth (), c.getHeight (), BufferedImage.TYPE_INT_ARGB);
