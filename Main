@@ -7,12 +7,13 @@ import javax.imageio.*;
 import java.io.*;
 import java.util.Random;
 
-public class Master
+public class DogCare
 {
     static Console c = new Console ();
     static BufferedImage image = new BufferedImage (c.getWidth (), c.getHeight (), BufferedImage.TYPE_INT_ARGB);
     static Graphics2D g = image.createGraphics ();
     static Random r = new Random ();
+    static Color pink = new Color (249, 199, 198);
 
     public static Image loadImage (String name) throws Exception
     {
@@ -29,17 +30,84 @@ public class Master
     }
 
 
-    public static void main (String[] args) throws Exception
+    public static void clear ()
     {
+        g.setColor (Color.white);
+        g.fillRect (0, 0, 700, 520);
+    }
 
-        //opening
+
+    public static void intro () throws Exception
+    {
+        //logo
         Image logo = loadImage ("logo.jpg");
         g.setFont (new Font ("Arial", Font.BOLD, 30));
-        g.setColor (new Color (249, 199, 198));
+        g.setColor (pink);
         g.drawImage (logo, 154, 55, null);
         g.drawString ("Press any key to start", 165, 450);
         c.drawImage (image, 0, 0, null);
-        c.getChar();
+        c.getChar ();
+
+        //welcome
+        clear ();
+        g.setColor (pink);
+        g.fillRect (0, 0, 640, 500);
+        g.setColor (Color.white);
+        g.drawString ("Welcome to Dog Care!", 160, 170);
+        g.drawString ("Would you like a tutorial? (y/n)", 110, 220);
+        c.drawImage (image, 0, 0, null);
+        char choice = c.getChar ();
+        while (choice != 'y' && choice != 'n' && choice != 'Y' && choice != 'N')
+        {
+            g.drawString ("Sorry, that is not a valid choice", 110, 270);
+            g.drawString ("Please try again", 210, 320);
+            c.drawImage (image, 0, 0, null);
+            choice = c.getChar ();
+        }
+
+        //instructions
+        if (choice == 'y')
+        {
+
+        }
+    }
+
+
+    public static char playAgain ()
+    {
+        clear ();
+        g.setColor (pink);
+        g.fillRect (0, 0, 640, 500);
+        g.setColor (Color.white);
+        g.drawString ("Would you like to play again? (y/n)", 90, 220);
+        c.drawImage (image, 0, 0, null);
+        char choice = c.getChar ();
+
+        while (choice != 'y' && choice != 'n' && choice != 'Y' && choice != 'N')
+        {
+            g.drawString ("Sorry, that is not a valid choice", 110, 270);
+            g.drawString ("Please try again", 210, 320);
+            c.drawImage (image, 0, 0, null);
+            choice = c.getChar ();
+        }
+
+        return choice;
+    }
+
+
+    public static void main (String[] args) throws Exception
+    {
+        int playAgain;
+
+        do
+        {
+            clear ();
+            intro ();
+            playAgain = playAgain ();
+        }
+        while (playAgain != 'n');
+        
+        //message saying thanks for playing surrounded by sparkles
 
     }
 }
