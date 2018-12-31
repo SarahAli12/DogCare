@@ -1,4 +1,4 @@
-AGE / STAGES OF LIFE
+## Age/Stages of Life
 - Puppy
 - Teenager
 - Adult
@@ -6,7 +6,7 @@ AGE / STAGES OF LIFE
   - can’t train anymore
   - more prone to illness
 
-STATS
+## Statistics
 - Health Bar
   - hunger
   - thirst
@@ -15,7 +15,7 @@ STATS
 - Relationship (with owner)
 - Intelligence
 
-ACTIONS
+## Actions
 - Play (affects happiness)
   - fetch
   - chewing toy
@@ -41,14 +41,14 @@ ACTIONS
 - Age
   - only possible if all bars are full
 
-CONSEQUENTIAL HAPPENINGS
+## Consequential Happenings
 - Malnutrition
 - Dehydration
 - Depression
 - Disconnect from owner
 - Complaint from others over behaviour
 
-RANDOM HAPPENINGS
+## Random Happenings
 - Illness
   - rabies
   - pneumonia
@@ -59,4 +59,4 @@ RANDOM HAPPENINGS
 - Attack by another dog
 - Splashes in puddle → covered in mud
 - Kidnapping (maybe not? cus what would you even do? that’s it for your dog, game over)
-  - maybe add a ransom option to get them back?
+  - maybe add a random option to get them back?
