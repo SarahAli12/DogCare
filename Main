@@ -84,6 +84,7 @@ public class DogCare
             g.drawString ("-  Teenager", 10, 360);
             g.drawString ("-  Adult", 10, 395);
             g.drawString ("-  Elder", 10, 430);
+            g.drawString ("Press any key to continue", 10, 475);
             c.drawImage (image, 0, 0, null);
             c.getChar();
         }
