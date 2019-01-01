@@ -7,35 +7,38 @@
   - more prone to illness
 
 ## Statistics
+Each are out of 100.
 - Health Bar
-  - hunger
-  - thirst
+  - hunger (25 / 100)
+  - thirst (25 / 100)
+  - the other 50% is full unless they're ill
 - Happiness Bar
 - Hygiene Bar
 - Relationship (with owner)
 - Intelligence
 
 ## Actions
+We should make it more complicated, with actions affecting more than 1 bar.
 - Play (affects happiness)
-  - fetch
-  - chewing toy
+  - fetch (+40)
+  - chewing toy (+30)
+  - treat (+10)
 - Groom (affects hygiene)
-  - brush
-  - bathe
+  - brush (+30)
+  - bathe (+40)
 - Food + Water (affects health)
-  - kibble
-  - wet food
-  - treats
-  - water
+  - food (+10)
+  - water (+10)
 - Affection (affects relationship)
-  - belly rub
-  - ear scratch
-  - cuddle
+  - belly rub (+40)
+  - ear scratch (+20)
+  - cuddle (+40)
 - Train (affects intelligence)
-  - sit
-  - roll over
-  - play dead
+  - sit (+30)
+  - roll over (+30)
+  - play dead (+30)
   - more likely to succeed if relationship is good
+  - should we have a pre-determined intelligence too?
 - Take to vet
   - only possible when ill? or just display “your dog is healthy” message otherwise?
 - Age
