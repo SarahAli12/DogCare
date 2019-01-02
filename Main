@@ -49,7 +49,6 @@ public class DogCare
         c.getChar ();
 
         //welcome
-        clear ();
         g.setColor (pink);
         g.fillRect (0, 0, 640, 500);
         g.setColor (Color.white);
@@ -66,14 +65,14 @@ public class DogCare
         }
 
         //instructions
-        if (choice == 'y')
+        while (choice == 'y')
         {
             g.setColor (pink);
             g.fillRect (0, 0, 640, 500);
             g.setColor (Color.white);
             g.setFont (new Font ("Arial", Font.BOLD, 25));
             g.drawString ("The goal of this game is to successfully raise a dog.", 10, 25);
-            g.drawString ("Your progress will be measured using 5 stat bars", 10, 70);
+            g.drawString ("Your progress will be measured using 5 stat bars:", 10, 70);
             g.drawString ("-  Health (which includes hunger and thirst)", 10, 105);
             g.drawString ("-  Happiness", 10, 140);
             g.drawString ("-  Hygiene", 10, 175);
@@ -84,27 +83,91 @@ public class DogCare
             g.drawString ("-  Teenager", 10, 360);
             g.drawString ("-  Adult", 10, 395);
             g.drawString ("-  Elder", 10, 430);
-            g.drawString ("Press any key to continue", 10, 475);
+            g.drawString ("Press any key to continue.", 10, 475);
             c.drawImage (image, 0, 0, null);
-            c.getChar();
+            c.getChar ();
+
+            g.setColor (pink);
+            g.fillRect (0, 0, 640, 500);
+            g.setColor (Color.white);
+            g.drawString ("You can take care of your dog by doing the following", 10, 25);
+            g.drawString ("actions:", 10, 60);
+            g.drawString ("-  Feed/Water", 10, 105);
+            g.drawString ("-  Play", 10, 140);
+            g.drawString ("-  Groom", 10, 175);
+            g.drawString ("-  Show affection", 10, 210);
+            g.drawString ("-  Train (the better your relationship, the more likely", 10, 245);
+            g.drawString ("   you are to succeed)", 10, 280);
+            g.drawString ("-  Take to vet", 10, 315);
+            g.drawString ("And finally, when all 5 stat bars are full you will be", 10, 360);
+            g.drawString ("able to age your dog!", 10, 395);
+            g.drawString ("Press any key to continue.", 10, 440);
+            c.drawImage (image, 0, 0, null);
+            c.getChar ();
+
+            g.setColor (pink);
+            g.fillRect (0, 0, 640, 500);
+            g.setColor (Color.white);
+            g.drawString ("There are several occurances that can happen as a", 10, 25);
+            g.drawString ("result of your neglect, such as dehydration,", 10, 60);
+            g.drawString ("malnutrition, and depression.", 10, 95);
+            g.drawString ("There are alsoseveral things that can occur", 10, 140);
+            g.drawString ("randomly and are therefore out of your control,", 10, 175);
+            g.drawString ("such as an attack from another dog, illness, and", 10, 210);
+            g.drawString ("losing your dog.", 10, 245);
+            g.drawString ("Some of these happenings are solvable. For", 10, 290);
+            g.drawString ("example, you can simply take your dog to the vet in", 10, 325);
+            g.drawString ("the case of illness. Others are simply up to chance,", 10, 360);
+            g.drawString ("like hoping you eventually find your dog.", 10, 395);
+            g.drawString ("Press any key to continue.", 10, 440);
+            c.drawImage (image, 0, 0, null);
+            c.getChar ();
+
+            g.setColor (pink);
+            g.fillRect (0, 0, 640, 500);
+            g.setColor (Color.white);
+            g.setFont (new Font ("Arial", Font.BOLD, 30));
+            g.drawString ("Would you like to replay the tutorial? (y/n)", 30, 220);
+            c.drawImage (image, 0, 0, null);
+            choice = c.getChar ();
+            while (choice != 'y' && choice != 'n' && choice != 'Y' && choice != 'N')
+            {
+                g.drawString ("Sorry, that is not a valid choice", 110, 270);
+                g.drawString ("Please try again", 210, 320);
+                c.drawImage (image, 0, 0, null);
+                choice = c.getChar ();
+            }
         }
+    }
+    
+    
+    public static char Adopt ()
+    {
+        char breed;
+        breed = c.getChar();
+        while (breed != 'c' && breed != 'b' && breed != 't')
+        {
+            breed = c.getChar();
+        }
+        return breed;
     }
 
 
-    public static char playAgain ()
+    public static char PlayAgain ()
     {
         clear ();
         g.setColor (pink);
         g.fillRect (0, 0, 640, 500);
+        g.setFont (new Font ("Arial", Font.BOLD, 30));
         g.setColor (Color.white);
-        g.drawString ("Would you like to play again? (y/n)", 90, 220);
+        g.drawString ("Would you like to play again? (y/n)", 80, 210);
         c.drawImage (image, 0, 0, null);
         char choice = c.getChar ();
 
         while (choice != 'y' && choice != 'n' && choice != 'Y' && choice != 'N')
         {
-            g.drawString ("Sorry, that is not a valid choice", 110, 270);
-            g.drawString ("Please try again", 210, 320);
+            g.drawString ("Sorry, that is not a valid choice", 100, 260);
+            g.drawString ("Please try again", 200, 310);
             c.drawImage (image, 0, 0, null);
             choice = c.getChar ();
         }
@@ -121,10 +184,11 @@ public class DogCare
         {
             clear ();
             intro ();
-            playAgain = playAgain ();
+            char breed = Adopt();
+            playAgain = PlayAgain ();
         }
         while (playAgain != 'n');
-        
+
         //message saying thanks for playing surrounded by sparkles
 
     }
