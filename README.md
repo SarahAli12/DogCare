@@ -63,3 +63,4 @@ We should make it more complicated, with actions affecting more than 1 bar.
 - Splashes in puddle → covered in mud
 - Kidnapping (maybe not? cus what would you even do? that’s it for your dog, game over)
   - maybe add a random option to get them back?
+- Losing your dog
