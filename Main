@@ -151,6 +151,18 @@ public class DogCare
         }
         return breed;
     }
+    
+    
+    /*public static String Name ()
+    {
+        String name;
+        name = c.getLine();
+        while (name.length() > 10 || name.length() <= 0)
+        {
+            name = c.getLine();
+        }
+        return name;
+    }*/
 
 
     public static char PlayAgain ()
@@ -185,6 +197,7 @@ public class DogCare
             clear ();
             intro ();
             char breed = Adopt();
+            //String name = Name();
             playAgain = PlayAgain ();
         }
         while (playAgain != 'n');
