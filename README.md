@@ -15,7 +15,7 @@ Each are out of 100.
 - Happiness Bar
 - Hygiene Bar
 - Relationship (with owner)
-- Intelligence
+- Intelligence (pre-determined at start from 0% - 25%)
 
 ## Actions
 We should make it more complicated, with actions affecting more than 1 bar.
@@ -34,9 +34,9 @@ We should make it more complicated, with actions affecting more than 1 bar.
   - ear scratch (+20)
   - cuddle (+40)
 - Train (affects intelligence)
-  - sit (+30)
-  - roll over (+30)
-  - play dead (+30)
+  - sit (+25)
+  - roll over (+25)
+  - play dead (+25)
   - more likely to succeed if relationship is good
   - should we have a pre-determined intelligence too?
 - Take to vet
