@@ -58,8 +58,8 @@ public class DogCare
         char choice = c.getChar ();
         while (choice != 'y' && choice != 'n' && choice != 'Y' && choice != 'N')
         {
-            g.drawString ("Sorry, that is not a valid choice", 110, 270);
-            g.drawString ("Please try again", 210, 320);
+            g.drawString ("Sorry, that is not a valid choice.", 110, 270);
+            g.drawString ("Please try again.", 210, 320);
             c.drawImage (image, 0, 0, null);
             choice = c.getChar ();
         }
@@ -132,8 +132,8 @@ public class DogCare
             choice = c.getChar ();
             while (choice != 'y' && choice != 'n' && choice != 'Y' && choice != 'N')
             {
-                g.drawString ("Sorry, that is not a valid choice", 110, 270);
-                g.drawString ("Please try again", 210, 320);
+                g.drawString ("Sorry, that is not a valid choice.", 110, 270);
+                g.drawString ("Please try again.", 210, 320);
                 c.drawImage (image, 0, 0, null);
                 choice = c.getChar ();
             }
@@ -144,25 +144,37 @@ public class DogCare
     public static char Adopt ()
     {
         char breed;
-        breed = c.getChar();
-        while (breed != 'c' && breed != 'b' && breed != 't')
+        g.setColor (pink);
+        g.fillRect (0, 0, 640, 500);
+        g.setColor (Color.white);
+        g.setFont (new Font ("Arial", Font.BOLD, 30));
+        g.drawString ("Which breed would you like to adopt?", 50, 40);
+        g.drawString ("Beagle (b)", 30, 400);
+        g.drawString ("Golden", 260, 400);
+        g.drawString ("Retriever (g)", 230, 440);
+        g.drawString ("Unkown (t)", 450, 400);
+        c.drawImage (image, 0, 0, null);
+        breed = c.getChar ();
+        while (breed != 'b' && breed != 'g' && breed != 't')
         {
-            breed = c.getChar();
+            g.drawString ("Sorry, that is not a valid choice.", 100, 90);
+            g.drawString ("Please try again.", 200, 140);
+            c.drawImage (image, 0, 0, null);
+            breed = c.getChar ();
         }
         return breed;
     }
     
     
-    /*public static String Name ()
+    public static String Name ()
     {
-        String name;
-        name = c.getLine();
+        String name = "";
+        name += c.getChar();
         while (name.length() > 10 || name.length() <= 0)
         {
-            name = c.getLine();
         }
         return name;
-    }*/
+    }
 
 
     public static char PlayAgain ()
