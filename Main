@@ -7,7 +7,7 @@ import javax.imageio.*;
 import java.io.*;
 import java.util.Random;
 
-public class DogCare
+public class DogCare extends java.lang.Exception
 {
     static Console c = new Console ();
     static BufferedImage image = new BufferedImage (c.getWidth (), c.getHeight (), BufferedImage.TYPE_INT_ARGB);
@@ -34,6 +34,35 @@ public class DogCare
     {
         g.setColor (Color.white);
         g.fillRect (0, 0, 700, 520);
+    }
+
+
+    public static void music ()
+    {
+
+        String filename = "";
+        ContinuousAudioDataStream loop = null;
+        InputStream in = null;
+        try
+        {
+            in = new FileInputStream (filename);
+        }
+        catch (FileNotFoundException ex)
+        {
+            System.out.println ("File not found");
+        }
+        try
+        {
+            AudioStream s = new AudioStream (in);
+            AudioData audiodata = s.getData ();
+            loop = new ContinuousAudioDataStream (audiodata);
+            AudioPlayer.player.start (loop);
+        }
+        catch (IOException ex)
+        {
+            System.out.println (ex.getMessage ());
+        }
+
     }
 
 
@@ -78,7 +107,7 @@ public class DogCare
             g.drawString ("-  Hygiene", 10, 175);
             g.drawString ("-  Relationship (with you, the owner)", 10, 210);
             g.drawString ("-  Intelligence", 10, 245);
-            g.drawString ("Your goal is to age your dog through 5 stages:", 10, 290);
+            g.drawString ("Your goal is to age your dog through 4 stages:", 10, 290);
             g.drawString ("-  Puppy", 10, 325);
             g.drawString ("-  Teenager", 10, 360);
             g.drawString ("-  Adult", 10, 395);
@@ -111,7 +140,7 @@ public class DogCare
             g.drawString ("There are several occurances that can happen as a", 10, 25);
             g.drawString ("result of your neglect, such as dehydration,", 10, 60);
             g.drawString ("malnutrition, and depression.", 10, 95);
-            g.drawString ("There are alsoseveral things that can occur", 10, 140);
+            g.drawString ("There are also several things that can occur", 10, 140);
             g.drawString ("randomly and are therefore out of your control,", 10, 175);
             g.drawString ("such as an attack from another dog, illness, and", 10, 210);
             g.drawString ("losing your dog.", 10, 245);
@@ -141,7 +170,7 @@ public class DogCare
     }
 
 
-    public static char Adopt ()
+    public static Image[] Adopt () throws Exception
     {
         char breed;
         g.setColor (pink);
@@ -161,7 +190,23 @@ public class DogCare
             c.drawImage (image, 0, 0, null);
             breed = c.getChar ();
         }
-        return breed;
+
+        Image[] beagle = {};
+        Image[] golden = {};
+        Image[] unknown = {};
+
+        if (breed == 'b')
+        {
+            return beagle;
+        }
+        else if (breed == 'g')
+        {
+            return golden;
+        }
+        else
+        {
+            return unknown;
+        }
     }
 
 
@@ -247,18 +292,46 @@ public class DogCare
     public static void main (String[] args) throws Exception
     {
         int playAgain;
+        //music ();
 
         do
         {
             clear ();
             intro ();
-            char breed = Adopt ();
-            String name = Name();
+            Image[] breed = Adopt ();
+            String name = Name ();
             playAgain = PlayAgain ();
         }
         while (playAgain != 'n');
 
-        //message saying thanks for playing surrounded by sparkles
+        //thanks for playing
+        Image sparkle = loadImage ("sparkle.png");
+        playAudio ("special.wav");
+        g.setFont (new Font ("Freestyle Script", Font.PLAIN, 80));
+        while (true)
+        {
+            g.setColor (pink);
+            g.fillRect (0, 0, 640, 500);
+            g.setColor (Color.white);
+            g.drawString ("Thanks for", 210, 240);
+            g.drawString ("playing!", 240, 330);
+            for (int i = 0 ; i <= 200 ; i++)
+            {
+                int x = r.nextInt (640);
+                int y = r.nextInt (500);
+                boolean frame = (x < 140 || x >= 500) || (y < 152 || y >= 348);
+                if (frame)
+                {
+                    g.drawImage (sparkle, x, y, null);
+                }
+                else
+                {
+                    i--;
+                }
+            }
+            c.drawImage (image, 0, 0, null);
+            Thread.sleep (20);
+        }
 
     }
 }
