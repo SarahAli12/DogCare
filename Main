@@ -191,7 +191,7 @@ public class DogCare extends java.lang.Exception
             breed = c.getChar ();
         }
 
-        Image[] beagle = {};
+        Image[] beagle = {loadImage ("beagle_puppy.png"), loadImage ("beagle_teen.png") };
         Image[] golden = {};
         Image[] unknown = {};
 
@@ -266,6 +266,15 @@ public class DogCare extends java.lang.Exception
     }
 
 
+    public static void Gameplay (int happiness, int relationship, int food, int water, int hygiene, int health)
+    {
+        while (happiness < 100 && relatioship < 100 && hygiene < 100 && health < 50 && food < 25 && water < 25)
+        {
+            c.getChar ();
+        }
+    }
+
+
     public static char PlayAgain ()
     {
         clear ();
@@ -298,8 +307,30 @@ public class DogCare extends java.lang.Exception
         {
             clear ();
             intro ();
-            Image[] breed = Adopt ();
+            Image[] dog = Adopt ();
             String name = Name ();
+
+            int intelligence = r.nextInt (25);
+            int hygiene;
+            int health = 50;
+            int happiness;
+            int relationship;
+            int food;
+            int water;
+            int age = 1;
+            //c = new Console (28, 91);
+
+            while (age <= 4)
+            {
+                hygiene = r.nextInt (100);
+                happiness = r.nextInt (100);
+                relationship = r.nextInt (100);
+                food = r.nextInt (25);
+                water = r.nextInt (25);
+                Gameplay (happiness, relationship, food, water, hygiene, health);
+                age++;
+            }
+
             playAgain = PlayAgain ();
         }
         while (playAgain != 'n');
