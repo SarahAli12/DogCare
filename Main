@@ -37,10 +37,10 @@ public class DogCare extends java.lang.Exception
     }
 
 
-    public static void BackgroundMusic ()
+    public static ContinuousAudioDataStream Music ()
     {
 
-        String filename = "";
+        String filename = "explosion.wav";
         ContinuousAudioDataStream loop = null;
         InputStream in = null;
         try
@@ -56,12 +56,13 @@ public class DogCare extends java.lang.Exception
             AudioStream s = new AudioStream (in);
             AudioData audiodata = s.getData ();
             loop = new ContinuousAudioDataStream (audiodata);
-            AudioPlayer.player.start (loop);
         }
         catch (IOException ex)
         {
             System.out.println (ex.getMessage ());
         }
+        
+        return loop;
 
     }
 
@@ -268,9 +269,10 @@ public class DogCare extends java.lang.Exception
 
     public static void Gameplay (int happiness, int relationship, int food, int water, int hygiene, int health)
     {
-        while (happiness < 100 && relatioship < 100 && hygiene < 100 && health < 50 && food < 25 && water < 25)
+        while (happiness < 100 && relationship < 100 && hygiene < 100 && health < 50 && food < 25 && water < 25)
         {
-            c.getChar ();
+            int choice = c.getChar ();
+            
         }
     }
 
@@ -301,11 +303,12 @@ public class DogCare extends java.lang.Exception
     public static void main (String[] args) throws Exception
     {
         int playAgain;
-        //BackgroundMusic ();
+        ContinuousAudioDataStream BackgroundMusic = Music ();
 
         do
         {
             clear ();
+            AudioPlayer.player.start (BackgroundMusic);
             intro ();
             Image[] dog = Adopt ();
             String name = Name ();
@@ -341,7 +344,7 @@ public class DogCare extends java.lang.Exception
         g.setFont (new Font ("Freestyle Script", Font.PLAIN, 80));
         while (true)
         {
-            g.setColor (pink);
+            g.setColor (new Color (175, 87, 86));
             g.fillRect (0, 0, 640, 500);
             g.setColor (Color.white);
             g.drawString ("Thanks for", 210, 240);
