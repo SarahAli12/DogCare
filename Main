@@ -40,7 +40,7 @@ public class DogCare extends java.lang.Exception
     public static ContinuousAudioDataStream Music ()
     {
 
-        String filename = "explosion.wav";
+        String filename = "";
         ContinuousAudioDataStream loop = null;
         InputStream in = null;
         try
@@ -303,12 +303,12 @@ public class DogCare extends java.lang.Exception
     public static void main (String[] args) throws Exception
     {
         int playAgain;
-        ContinuousAudioDataStream BackgroundMusic = Music ();
+        //ContinuousAudioDataStream BackgroundMusic = Music ();
 
         do
         {
             clear ();
-            AudioPlayer.player.start (BackgroundMusic);
+            //AudioPlayer.player.start (BackgroundMusic);
             intro ();
             Image[] dog = Adopt ();
             String name = Name ();
