@@ -64,3 +64,13 @@ We should make it more complicated, with actions affecting more than 1 bar.
 - Kidnapping (maybe not? cus what would you even do? that’s it for your dog, game over)
   - maybe add a random option to get them back?
 - Losing your dog
+
+## Dog Pic Sizing
+- Beagle
+  - puppy: 150 px high
+  - teen: 200 px high
+  - adult+elder: 250 px high
+  - actions: all the actions will be default for the adult and resized later, so about 250 px high, but use your judgement to determine height e.g. lower when laying down, higher when jumping (but we're done most of them anyways)
+- Golden
+  - goldens are bigger than beagles, so I think just make it about 100 px taller? e.g. 200, 250, 300
+  - again, use your judgement to determine action pic sizing, try to keep the same ratio as with beagles
