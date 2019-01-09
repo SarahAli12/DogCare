@@ -9,9 +9,12 @@ import java.util.Random;
 
 public class DogCare extends java.lang.Exception
 {
-    static Console c = new Console ();
+    static Console c = new Console (30, 100);
     static BufferedImage image = new BufferedImage (c.getWidth (), c.getHeight (), BufferedImage.TYPE_INT_ARGB);
     static Graphics2D g = image.createGraphics ();
+    /*static Console c2 = new Console (30, 100);
+    static BufferedImage image2 = new BufferedImage (c2.getWidth (), c2.getHeight (), BufferedImage.TYPE_INT_ARGB);
+    static Graphics2D g2 = image2.createGraphics ();*/
     static Random r = new Random ();
     static Color pink = new Color (249, 199, 198);
 
@@ -39,13 +42,11 @@ public class DogCare extends java.lang.Exception
 
     public static ContinuousAudioDataStream Music ()
     {
-
-        String filename = "";
         ContinuousAudioDataStream loop = null;
         InputStream in = null;
         try
         {
-            in = new FileInputStream (filename);
+            in = new FileInputStream ("");
         }
         catch (FileNotFoundException ex)
         {
@@ -61,9 +62,7 @@ public class DogCare extends java.lang.Exception
         {
             System.out.println (ex.getMessage ());
         }
-        
         return loop;
-
     }
 
 
@@ -192,9 +191,10 @@ public class DogCare extends java.lang.Exception
             breed = c.getChar ();
         }
 
-        Image[] beagle = {loadImage ("beagle_puppy.png"), loadImage ("beagle_teen.png") };
+        Image[] beagle = {loadImage ("beagle_puppy.png"), loadImage ("beagle_teen.png"), loadImage ("beagle_adult.png"), loadImage ("beagle_old.png"), loadImage ("beagle_eating.png"), loadImage ("beagle_standing.png"), loadImage ("beagle_belly.png"), loadImage ("beagle_chew.png"), loadImage ("beagle_fetch.png") };
         Image[] golden = {};
         Image[] unknown = {};
+        //image order: puppy [1], teen [2], adult [3], old [4], eating [5], standing [6], belly [7], chewing [8], fetch [9], bath [10]
 
         if (breed == 'b')
         {
@@ -252,7 +252,7 @@ public class DogCare extends java.lang.Exception
             g.fillRect (0, 0, 640, 500);
             g.setColor (Color.white);
             g.drawString ("Are you sure you want to name your dog", 30, 200);
-            g.drawString ("'" + name + "'? (y/n)", 200, 250);
+            g.drawString ("'" + name + "'? (y/n)", (640 - (name.length () + 9) * 15) / 2, 250);
             c.drawImage (image, 0, 0, null);
             confirm = c.getChar ();
             while (confirm != 'y' && confirm != 'n')
@@ -264,16 +264,6 @@ public class DogCare extends java.lang.Exception
             }
         }
         return name;
-    }
-
-
-    public static void Gameplay (int happiness, int relationship, int food, int water, int hygiene, int health)
-    {
-        while (happiness < 100 && relationship < 100 && hygiene < 100 && health < 50 && food < 25 && water < 25)
-        {
-            int choice = c.getChar ();
-            
-        }
     }
 
 
@@ -321,7 +311,6 @@ public class DogCare extends java.lang.Exception
             int food;
             int water;
             int age = 1;
-            //c = new Console (28, 91);
 
             while (age <= 4)
             {
@@ -330,7 +319,143 @@ public class DogCare extends java.lang.Exception
                 relationship = r.nextInt (100);
                 food = r.nextInt (25);
                 water = r.nextInt (25);
-                Gameplay (happiness, relationship, food, water, hygiene, health);
+                while (happiness < 100 || relationship < 100 || hygiene < 100 || health < 50 || food < 25 || water < 25)
+                {
+                    Image plate = loadImage ("plate.jpg");
+                    g.drawImage (plate, 0, 0, null);
+                    g.setColor (new Color (147, 119, 32));
+                    g.setFont (new Font ("Arial", Font.BOLD, 30));
+                    g.drawString (name, (500 - name.length () * 22) / 2, 35);
+                    g.setColor (Color.darkGray);
+                    g.fillRect (500, 0, 300, 600);
+                    g.fillRect (0, 525, 500, 75);
+
+                    g.setColor (new Color (206, 150, 107));
+                    g.fillRect (525, 30, (int) (food * 0.04 * 62), 30);
+                    g.setColor (new Color (83, 207, 209));
+                    g.fillRect (587, 30, (int) (water * 0.04 * 63), 30);
+                    g.setColor (Color.green);
+                    g.fillRect (650, 30, (int) (health * 0.02 * 125), 30);
+                    g.fillRect (525, 80, (int) (happiness * 0.01 * 250), 30);
+                    g.fillRect (525, 130, (int) (hygiene * 0.01 * 250), 30);
+                    g.fillRect (525, 180, (int) (relationship * 0.01 * 250), 30);
+                    g.fillRect (525, 230, (int) (intelligence * 0.01 * 250), 30);
+                    g.setColor (Color.white);
+                    g.setStroke (new BasicStroke (3));
+                    for (int i = 30 ; i <= 230 ; i += 50)
+                    {
+                        g.drawRect (525, i, 250, 30);
+                    }
+                    g.setFont (new Font ("Arial", Font.BOLD, 20));
+                    g.drawString ("Health", 610, 53);
+                    g.drawString ("Happiness", 600, 103);
+                    g.drawString ("Hygiene", 610, 153);
+                    g.drawString ("Relationship", 590, 203);
+                    g.drawString ("Intelligence", 593, 253);
+
+                    Image bed = loadImage ("bed.jpg");
+                    g.drawImage (bed, 0, 50, null);
+                    g.drawImage (dog [age - 1], 150, 150, null);
+                    c.drawImage (image, 0, 0, null);
+                    char choice = c.getChar ();
+                    while (choice < '1' || choice > '6')
+                    {
+                        choice = c.getChar ();
+                    }
+                    if (choice == '1') //nutrition
+                    {
+                        choice = c.getChar ();
+                        while (choice != 'a' && choice != 'b' && choice != 'x')
+                        {
+                            choice = c.getChar ();
+                        }
+                        if (choice == 'a') //feed
+                        {
+                            food += 25 - food;
+                        }
+                        else //water
+                        {
+                            water += 25 - water;
+                        }
+                    }
+                    else if (choice == '2') //play
+                    {
+                        choice = c.getChar ();
+                        while (choice != 'a' && choice != 'b' && choice != 'c' && choice != 'x')
+                        {
+                            choice = c.getChar ();
+                        }
+                        if (choice == 'a') //fetch
+                        {
+                            happiness += 100 - happiness;
+                        }
+                        if (choice == 'b') //chew
+                        {
+                            happiness += 100 - happiness;
+                        }
+                        else //treat
+                        {
+                            happiness += 100 - happiness;
+                        }
+                    }
+                    else if (choice == '3') //groom
+                    {
+                        choice = c.getChar ();
+                        while (choice != 'a' && choice != 'b' && choice != 'x')
+                        {
+                            choice = c.getChar ();
+                        }
+                        if (choice == 'a') //brush
+                        {
+                            hygiene += 100 - hygiene;
+                        }
+                        else //bath
+                        {
+                            hygiene += 100 - hygiene;
+                        }
+                    }
+                    else if (choice == '4') //show affection
+                    {
+                        choice = c.getChar ();
+                        while (choice != 'a' && choice != 'b' && choice != 'c' && choice != 'x')
+                        {
+                            choice = c.getChar ();
+                        }
+                        if (choice == 'a') //belly rub
+                        {
+                            relationship += 100 - relationship;
+                        }
+                        if (choice == 'b') //ear scratch
+                        {
+                            relationship += 100 - relationship;
+                        }
+                        else //cuddle
+                        {
+                            relationship += 100 - relationship;
+                        }
+                    }
+                    else if (choice == '5') //train
+                    {
+                        choice = c.getChar ();
+                        while (choice != 'a' && choice != 'b' && choice != 'c' && choice != 'x')
+                        {
+                            choice = c.getChar ();
+                        }
+                        if (choice == 'a') //sit
+                        {
+                        }
+                        if (choice == 'b') //roll over
+                        {
+                        }
+                        else //play dead
+                        {
+                        }
+                    }
+                    else //take to vet
+                    {
+                        health += 50 - health;
+                    }
+                }
                 age++;
             }
 
