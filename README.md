@@ -34,15 +34,15 @@ We should make it more complicated, with actions affecting more than 1 bar.
   - ear scratch (+20)
   - cuddle (+40)
 - Train (affects intelligence)
+  - pre-determined intelligence between 0 and 25
   - sit (+25)
   - roll over (+25)
   - play dead (+25)
   - more likely to succeed if relationship is good
-  - should we have a pre-determined intelligence too?
 - Take to vet
-  - only possible when ill? or just display “your dog is healthy” message otherwise?
+  - display “your dog is healthy” message if they have no illness
 - Age
-  - only possible if all bars are full
+  - automatically when all bars are full
 
 ## Consequential Happenings
 - Malnutrition
