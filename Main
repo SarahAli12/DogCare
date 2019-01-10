@@ -36,17 +36,17 @@ public class DogCare extends java.lang.Exception
     public static void clear ()
     {
         g.setColor (Color.white);
-        g.fillRect (0, 0, 700, 520);
+        g.fillRect (0, 0, 800, 600);
     }
 
 
-    public static ContinuousAudioDataStream Music ()
+    public static ContinuousAudioDataStream Music (String filename)
     {
         ContinuousAudioDataStream loop = null;
         InputStream in = null;
         try
         {
-            in = new FileInputStream ("");
+            in = new FileInputStream (filename);
         }
         catch (FileNotFoundException ex)
         {
@@ -265,17 +265,43 @@ public class DogCare extends java.lang.Exception
         }
         return name;
     }
-    
-    
+
+
+    public static void Bars (int food, int water, int health, int happiness, int hygiene, int relationship, int intelligence)
+    {
+        g.setFont (new Font ("Arial", Font.BOLD, 30));
+        g.setColor (new Color (206, 150, 107));
+        g.fillRect (525, 30, (int) (food * 0.04 * 62), 30);
+        g.setColor (new Color (83, 207, 209));
+        g.fillRect (587, 30, (int) (water * 0.04 * 63), 30);
+        g.setColor (Color.green);
+        g.fillRect (650, 30, (int) (health * 0.02 * 125), 30);
+        g.fillRect (525, 80, (int) (happiness * 0.01 * 250), 30);
+        g.fillRect (525, 130, (int) (hygiene * 0.01 * 250), 30);
+        g.fillRect (525, 180, (int) (relationship * 0.01 * 250), 30);
+        g.fillRect (525, 230, (int) (intelligence * 0.01 * 250), 30);
+        g.setColor (Color.white);
+        g.setStroke (new BasicStroke (3));
+        for (int i = 30 ; i <= 230 ; i += 50)
+        {
+            g.drawRect (525, i, 250, 30);
+        }
+        g.setFont (new Font ("Arial", Font.BOLD, 20));
+        g.drawString ("Health", 610, 53);
+        g.drawString ("Happiness", 600, 103);
+        g.drawString ("Hygiene", 610, 153);
+        g.drawString ("Relationship", 590, 203);
+        g.drawString ("Intelligence", 593, 253);
+    }
+
+
     public static int getStat (int stat, int max, int increase)
     {
         stat += increase;
-        
         if (stat > max)
         {
             stat -= stat - max;
         }
-        
         return stat;
     }
 
@@ -306,7 +332,7 @@ public class DogCare extends java.lang.Exception
     public static void main (String[] args) throws Exception
     {
         int playAgain;
-        //ContinuousAudioDataStream BackgroundMusic = Music ();
+        //ContinuousAudioDataStream BackgroundMusic = Music ("special.wav");
         //AudioPlayer.player.start (BackgroundMusic);
 
         do
@@ -343,32 +369,11 @@ public class DogCare extends java.lang.Exception
                     g.fillRect (500, 0, 300, 600);
                     g.fillRect (0, 525, 500, 75);
 
-                    g.setColor (new Color (206, 150, 107));
-                    g.fillRect (525, 30, (int) (food * 0.04 * 62), 30);
-                    g.setColor (new Color (83, 207, 209));
-                    g.fillRect (587, 30, (int) (water * 0.04 * 63), 30);
-                    g.setColor (Color.green);
-                    g.fillRect (650, 30, (int) (health * 0.02 * 125), 30);
-                    g.fillRect (525, 80, (int) (happiness * 0.01 * 250), 30);
-                    g.fillRect (525, 130, (int) (hygiene * 0.01 * 250), 30);
-                    g.fillRect (525, 180, (int) (relationship * 0.01 * 250), 30);
-                    g.fillRect (525, 230, (int) (intelligence * 0.01 * 250), 30);
-                    g.setColor (Color.white);
-                    g.setStroke (new BasicStroke (3));
-                    for (int i = 30 ; i <= 230 ; i += 50)
-                    {
-                        g.drawRect (525, i, 250, 30);
-                    }
-                    g.setFont (new Font ("Arial", Font.BOLD, 20));
-                    g.drawString ("Health", 610, 53);
-                    g.drawString ("Happiness", 600, 103);
-                    g.drawString ("Hygiene", 610, 153);
-                    g.drawString ("Relationship", 590, 203);
-                    g.drawString ("Intelligence", 593, 253);
+                    Bars (food, health, health, happiness, hygiene, relationship, intelligence);
 
                     Image bed = loadImage ("bed.jpg");
                     g.drawImage (bed, 0, 50, null);
-                    g.drawImage (dog [age - 1], 150, 150, null);
+                    g.drawImage (dog [age - 1], 200, 150, null);
                     c.drawImage (image, 0, 0, null);
                     char choice = c.getChar ();
                     while (choice < '1' || choice > '6')
@@ -466,6 +471,7 @@ public class DogCare extends java.lang.Exception
                     }
                     else //take to vet
                     {
+                        //random chance of success
                         health = 50;
                     }
                 }
@@ -475,7 +481,7 @@ public class DogCare extends java.lang.Exception
             playAgain = PlayAgain ();
         }
         while (playAgain != 'n');
-        
+
         //AudioPlayer.player.stop (music);
 
         //thanks for playing
