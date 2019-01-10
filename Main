@@ -265,6 +265,19 @@ public class DogCare extends java.lang.Exception
         }
         return name;
     }
+    
+    
+    public static int getStat (int stat, int max, int increase)
+    {
+        stat += increase;
+        
+        if (stat > max)
+        {
+            stat -= stat - max;
+        }
+        
+        return stat;
+    }
 
 
     public static char PlayAgain ()
@@ -294,11 +307,11 @@ public class DogCare extends java.lang.Exception
     {
         int playAgain;
         //ContinuousAudioDataStream BackgroundMusic = Music ();
+        //AudioPlayer.player.start (BackgroundMusic);
 
         do
         {
             clear ();
-            //AudioPlayer.player.start (BackgroundMusic);
             intro ();
             Image[] dog = Adopt ();
             String name = Name ();
@@ -371,11 +384,11 @@ public class DogCare extends java.lang.Exception
                         }
                         if (choice == 'a') //feed
                         {
-                            food += 25 - food;
+                            food = getStat (food, 25, 10);
                         }
                         else //water
                         {
-                            water += 25 - water;
+                            water = getStat (water, 25, 10);
                         }
                     }
                     else if (choice == '2') //play
@@ -387,15 +400,15 @@ public class DogCare extends java.lang.Exception
                         }
                         if (choice == 'a') //fetch
                         {
-                            happiness += 100 - happiness;
+                            happiness = getStat (happiness, 100, 20);
                         }
                         if (choice == 'b') //chew
                         {
-                            happiness += 100 - happiness;
+                            happiness = getStat (happiness, 100, 15);
                         }
                         else //treat
                         {
-                            happiness += 100 - happiness;
+                            happiness = getStat (happiness, 100, 15);
                         }
                     }
                     else if (choice == '3') //groom
@@ -407,11 +420,11 @@ public class DogCare extends java.lang.Exception
                         }
                         if (choice == 'a') //brush
                         {
-                            hygiene += 100 - hygiene;
+                            hygiene = getStat (hygiene, 100, 40);
                         }
                         else //bath
                         {
-                            hygiene += 100 - hygiene;
+                            hygiene = getStat (hygiene, 100, 50);
                         }
                     }
                     else if (choice == '4') //show affection
@@ -423,15 +436,15 @@ public class DogCare extends java.lang.Exception
                         }
                         if (choice == 'a') //belly rub
                         {
-                            relationship += 100 - relationship;
+                            relationship = getStat (relationship, 100, 30);
                         }
                         if (choice == 'b') //ear scratch
                         {
-                            relationship += 100 - relationship;
+                            relationship = getStat (relationship, 100, 20);
                         }
                         else //cuddle
                         {
-                            relationship += 100 - relationship;
+                            relationship = getStat (relationship, 100, 40);
                         }
                     }
                     else if (choice == '5') //train
@@ -453,7 +466,7 @@ public class DogCare extends java.lang.Exception
                     }
                     else //take to vet
                     {
-                        health += 50 - health;
+                        health = 50;
                     }
                 }
                 age++;
@@ -462,6 +475,8 @@ public class DogCare extends java.lang.Exception
             playAgain = PlayAgain ();
         }
         while (playAgain != 'n');
+        
+        //AudioPlayer.player.stop (music);
 
         //thanks for playing
         Image sparkle = loadImage ("sparkle.png");
