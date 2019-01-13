@@ -276,13 +276,13 @@ public class DogCare extends java.lang.Exception
             g.fillRect (660, i, 115, 50);
         }
         g.setColor(Color.white);
-        g.setFont (new Font ("Arial", Font.BOLD, 20));
-        g.drawString ("Nutrition", 538, 358);
-        g.drawString ("Play", 695, 358);
-        g.drawString ("Groom", 547, 428);
-        g.drawString ("Affection", 671, 428);
-        g.drawString ("Train", 555, 498);
-        g.drawString ("Vet", 700, 498);
+        g.setFont (new Font ("Arial", Font.BOLD, 18));
+        g.drawString ("Nutrition (1)", 530, 358);
+        g.drawString ("Play (2)", 687, 358);
+        g.drawString ("Groom (3)", 540, 428);
+        g.drawString ("Bond (4)", 687, 428);
+        g.drawString ("Train (5)", 546, 498);
+        g.drawString ("Vet (6)", 689, 498);
         c.drawImage (image, 0, 0, null);
     }
 
@@ -314,7 +314,6 @@ public class DogCare extends java.lang.Exception
         g.drawString ("Intelligence", 593, 253);
         c.drawImage (image, 0, 0, null);
     }
-
 
     public static int getStat (int stat, int max, int increase)
     {
