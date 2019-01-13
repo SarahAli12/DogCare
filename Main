@@ -2,19 +2,16 @@ import java.awt.*;
 import hsa.Console;
 import java.awt.image.BufferedImage;
 import sun.audio.*;
-import javax.swing.*;
 import javax.imageio.*;
 import java.io.*;
 import java.util.Random;
 
 public class DogCare extends java.lang.Exception
 {
+
     static Console c = new Console (30, 100);
     static BufferedImage image = new BufferedImage (c.getWidth (), c.getHeight (), BufferedImage.TYPE_INT_ARGB);
     static Graphics2D g = image.createGraphics ();
-    /*static Console c2 = new Console (30, 100);
-    static BufferedImage image2 = new BufferedImage (c2.getWidth (), c2.getHeight (), BufferedImage.TYPE_INT_ARGB);
-    static Graphics2D g2 = image2.createGraphics ();*/
     static Random r = new Random ();
     static Color pink = new Color (249, 199, 198);
 
@@ -40,29 +37,20 @@ public class DogCare extends java.lang.Exception
     }
 
 
-    public static ContinuousAudioDataStream Music (String filename)
+    public static void Music () throws Exception
     {
-        ContinuousAudioDataStream loop = null;
-        InputStream in = null;
-        try
+        while (true)
         {
-            in = new FileInputStream (filename);
+            try
+            {
+                playAudio ("bgmusic.wav");
+                Thread.sleep (73000);
+            }
+            catch (java.lang.Exception ex)
+            {
+                c.println (ex.getMessage ());
+            }
         }
-        catch (FileNotFoundException ex)
-        {
-            System.out.println (ex.getMessage ());
-        }
-        try
-        {
-            AudioStream s = new AudioStream (in);
-            AudioData audiodata = s.getData ();
-            loop = new ContinuousAudioDataStream (audiodata);
-        }
-        catch (IOException ex)
-        {
-            System.out.println (ex.getMessage ());
-        }
-        return loop;
     }
 
 
@@ -267,6 +255,38 @@ public class DogCare extends java.lang.Exception
     }
 
 
+    public static void Layout (String name, int age) throws Exception
+    {
+        Image plate = loadImage ("plate.jpg");
+        g.drawImage (plate, 0, 0, null);
+        g.setColor (new Color (147, 119, 32));
+        g.setFont (new Font ("Arial", Font.BOLD, 30));
+        g.drawString (name, (500 - name.length () * 22) / 2, 35);
+
+        g.setColor (Color.darkGray);
+        g.fillRect (500, 0, 300, 600);
+        g.fillRect (0, 525, 500, 75);
+
+        g.setColor (new Color (185, 252, 103));
+        g.setFont (new Font ("Arial", Font.BOLD, 15));
+        g.drawString ("Choose from the following actions:", 525, 305);
+        for (int i = 325 ; i <= 465 ; i += 70)
+        {
+            g.fillRect (525, i, 115, 50);
+            g.fillRect (660, i, 115, 50);
+        }
+        g.setColor(Color.white);
+        g.setFont (new Font ("Arial", Font.BOLD, 20));
+        g.drawString ("Nutrition", 538, 358);
+        g.drawString ("Play", 695, 358);
+        g.drawString ("Groom", 547, 428);
+        g.drawString ("Affection", 671, 428);
+        g.drawString ("Train", 555, 498);
+        g.drawString ("Vet", 700, 498);
+        c.drawImage (image, 0, 0, null);
+    }
+
+
     public static void Bars (int food, int water, int health, int happiness, int hygiene, int relationship, int intelligence)
     {
         g.setFont (new Font ("Arial", Font.BOLD, 30));
@@ -292,6 +312,7 @@ public class DogCare extends java.lang.Exception
         g.drawString ("Hygiene", 610, 153);
         g.drawString ("Relationship", 590, 203);
         g.drawString ("Intelligence", 593, 253);
+        c.drawImage (image, 0, 0, null);
     }
 
 
@@ -300,7 +321,7 @@ public class DogCare extends java.lang.Exception
         stat += increase;
         if (stat > max)
         {
-            stat -= stat - max;
+            stat = max;
         }
         return stat;
     }
@@ -331,9 +352,24 @@ public class DogCare extends java.lang.Exception
 
     public static void main (String[] args) throws Exception
     {
+        Runnable muse = new Runnable ()
+        {
+            public void run ()
+            {
+                try
+                {
+                    Music ();
+                }
+                catch (java.lang.Exception ex)
+                {
+                    c.println (ex.getMessage ());
+                }
+            }
+        }
+        ;
+        new Thread (muse).start ();
+
         int playAgain;
-        //ContinuousAudioDataStream BackgroundMusic = Music ("special.wav");
-        //AudioPlayer.player.start (BackgroundMusic);
 
         do
         {
@@ -360,21 +396,14 @@ public class DogCare extends java.lang.Exception
                 water = r.nextInt (25);
                 while (happiness < 100 || relationship < 100 || hygiene < 100 || health < 50 || food < 25 || water < 25)
                 {
-                    Image plate = loadImage ("plate.jpg");
-                    g.drawImage (plate, 0, 0, null);
-                    g.setColor (new Color (147, 119, 32));
-                    g.setFont (new Font ("Arial", Font.BOLD, 30));
-                    g.drawString (name, (500 - name.length () * 22) / 2, 35);
-                    g.setColor (Color.darkGray);
-                    g.fillRect (500, 0, 300, 600);
-                    g.fillRect (0, 525, 500, 75);
-
+                    Layout (name, age);
                     Bars (food, health, health, happiness, hygiene, relationship, intelligence);
 
                     Image bed = loadImage ("bed.jpg");
                     g.drawImage (bed, 0, 50, null);
                     g.drawImage (dog [age - 1], 200, 150, null);
                     c.drawImage (image, 0, 0, null);
+
                     char choice = c.getChar ();
                     while (choice < '1' || choice > '6')
                     {
@@ -482,8 +511,6 @@ public class DogCare extends java.lang.Exception
         }
         while (playAgain != 'n');
 
-        //AudioPlayer.player.stop (music);
-
         //thanks for playing
         Image sparkle = loadImage ("sparkle.png");
         playAudio ("special.wav");
@@ -512,6 +539,5 @@ public class DogCare extends java.lang.Exception
             c.drawImage (image, 0, 0, null);
             Thread.sleep (20);
         }
-
     }
 }
