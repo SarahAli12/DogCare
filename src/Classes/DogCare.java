@@ -41,7 +41,7 @@ public class DogCare extends Intro
     {
       try
       {
-        playAudio ("bgmusic.wav");
+        playAudio ("./src/Audio/bgmusic.wav");
         Thread.sleep (73000);
       }
       catch (java.lang.Exception ex)
@@ -53,7 +53,7 @@ public class DogCare extends Intro
 
   public static void Layout (String name, int age) throws Exception
   {
-    Image plate = loadImage ("plate.jpg");
+    Image plate = loadImage ("./src/Images/plate.jpg");
     g.drawImage (plate, 0, 0, null);
     g.setColor (new Color (147, 119, 32));
     g.setFont (new Font ("Arial", Font.BOLD, 30));
@@ -191,7 +191,7 @@ public class DogCare extends Intro
           Layout (name, age);
           Bars (food, health, health, happiness, hygiene, relationship, intelligence);
 
-          Image bed = loadImage ("bed.jpg");
+          Image bed = loadImage ("./src/Images/bed.jpg");
           g.drawImage (bed, 0, 50, null);
           g.drawImage (dog [age - 1], 200, 150, null);
           c.drawImage (image, 0, 0, null);
@@ -304,8 +304,8 @@ public class DogCare extends Intro
     while (playAgain != 'n');
 
     //thanks for playing
-    Image sparkle = loadImage ("sparkle.png");
-    playAudio ("special.wav");
+    Image sparkle = loadImage ("./src/Images/sparkle.png");
+    playAudio ("./src/Images/special.wav");
     g.setFont (new Font ("Freestyle Script", Font.PLAIN, 80));
     while (true)
     {

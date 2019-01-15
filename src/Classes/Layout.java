@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class Layout
 {
-    static Console c = new Console (30, 100);
+    static Console c = new Console (35, 100); //changed from 30 to 35
     static BufferedImage image = new BufferedImage (c.getWidth (), c.getHeight (), BufferedImage.TYPE_INT_ARGB);
     static Graphics2D g = image.createGraphics ();
     static Random r = new Random ();
@@ -41,7 +41,7 @@ public class Layout
 
     public static void Layout (String name, int age) throws Exception
     {
-	Image plate = loadImage ("plate.jpg");
+	Image plate = loadImage ("./src/Images/plate.jpg");
 	g.drawImage (plate, 0, 0, null);
 	g.setColor (new Color (147, 119, 32));
 	g.setFont (new Font ("Arial", Font.BOLD, 30));
