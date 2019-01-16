@@ -1,3 +1,5 @@
+package Classes;
+
 import java.awt.*;
 import hsa.Console;
 import java.awt.image.BufferedImage;
@@ -31,7 +33,7 @@ public class Intro extends Layout
     public static void intro () throws Exception
     {
 	//logo
-	Image logo = loadImage ("logo.jpg");
+	Image logo = loadImage ("./src/Images/logo.jpg");
 	g.setFont (new Font ("Arial", Font.BOLD, 30));
 	g.setColor (pink);
 	g.drawImage (logo, 154, 55, null);
@@ -153,7 +155,7 @@ public class Intro extends Layout
 	    breed = c.getChar ();
 	}
 
-	Image[] beagle = {loadImage ("beagle_puppy.png"), loadImage ("beagle_teen.png"), loadImage ("beagle_adult.png"), loadImage ("beagle_old.png"), loadImage ("beagle_eating.png"), loadImage ("beagle_standing.png"), loadImage ("beagle_belly.png"), loadImage ("beagle_chew.png"), loadImage ("beagle_fetch.png") };
+	Image[] beagle = {loadImage ("./src/Images/beagle_puppy.png"), loadImage ("./src/Images/beagle_teen.png"), loadImage ("./src/Images/beagle_adult.png"), loadImage ("./src/Images/beagle_old.png"), loadImage ("./src/Images/beagle_eating.png"), loadImage ("./src/Images/beagle_standing.png"), loadImage ("./src/Images/beagle_belly.png"), loadImage ("./src/Images/beagle_chew.png"), loadImage ("./src/Images/beagle_fetch.png") };
 	Image[] golden = {};
 	Image[] unknown = {};
 	//image order: puppy [1], teen [2], adult [3], old [4], eating [5], standing [6], belly [7], chewing [8], fetch [9], bath [10]
