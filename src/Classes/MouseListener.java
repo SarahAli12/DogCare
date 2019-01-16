@@ -2,8 +2,8 @@ package Classes;
 
 import java.awt.*;
 import java.awt.event.*;
-public class MouseListenerExample2 extends Frame implements MouseListener{
-  MouseListenerExample2(){
+public class MouseListener extends Frame implements java.awt.event.MouseListener {
+  MouseListener(){
     addMouseListener(this);
 
     setSize(300,300);
@@ -21,6 +21,6 @@ public class MouseListenerExample2 extends Frame implements MouseListener{
   public void mouseReleased(MouseEvent e) {}
 
   public static void main(String[] args) {
-    new MouseListenerExample2();
+    new MouseListener();
   }
 }
