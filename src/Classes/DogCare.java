@@ -1,3 +1,5 @@
+package Classes;
+
 import java.awt.*;
 import hsa.Console;
 import java.awt.image.BufferedImage;
