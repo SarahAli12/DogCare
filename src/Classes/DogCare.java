@@ -51,19 +51,29 @@ public class DogCare
 //            System.err.println("Couldn't find file: " + name);
 //            return null;
 //        }
+
+//    public static File loadFile (String name) throws Exception
+//    {
+//        File file = new File (DogCare.class.getResource(name).getFile());
+//        return file;
+//    }
     }
 
     public static void playAudio (String name) throws Exception
     {
-        File file = new File (DogCare.class.getResource(name).getFile());
-        try {
-            InputStream in = new FileInputStream (file);
-            AudioStream as = new AudioStream (in);
-            AudioPlayer.player.start (as);
-        }
-        catch(Exception e) {
-            System.err.println("Couldn't find file: " + name);
-        }
+        InputStream in = new FileInputStream (name);
+        AudioStream as = new AudioStream (in);
+        AudioPlayer.player.start (as);
+
+//        File file = new File (DogCare.class.getResource(name).getFile());
+//        try {
+//            InputStream in = new FileInputStream (file);
+//            AudioStream as = new AudioStream (in);
+//            AudioPlayer.player.start (as);
+//        }
+//        catch(Exception e) {
+//            System.err.println("Couldn't find file: " + name);
+//        }
     }
 
     public static void clear ()
