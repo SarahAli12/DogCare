@@ -1,3 +1,5 @@
+package Classes;
+
 import javax.sound.sampled.*;
 import java.io.*;
 import java.net.*;
@@ -7,7 +9,7 @@ public class Sound
     private Clip clip;
     private FloatControl volume;
 
-    public Sound (String filename)
+    public Sound(String filename)
     {       
         File file = new File(filename);
         try
@@ -49,12 +51,12 @@ public class Sound
     {
         clip.stop();
     }
-    
+
     public void louder()
     {
         volume.setValue(6.0206f);
     }
-    
+
     public void lower ()
     {
         volume.setValue(-6.0206f);

@@ -1,3 +1,5 @@
+package Classes;
+
 import java.awt.*;
 import hsa.Console;
 import java.awt.image.BufferedImage;
@@ -21,13 +23,47 @@ public class DogCare
     {
         Image img = ImageIO.read (new File (name));
         return img;
+
+        /* Different Ways to Load Files Directly Inside ./src/Folder */
+//        InputStream file1 = DogCare.class.getClassLoader().getResourceAsStream(name);
+
+//        InputStream inputStream = null;
+//        try {
+//            File file = new File(DogCare.class.getResource(name).getFile());
+//            inputStream = new FileInputStream(file);
+//        }
+//        finally {
+//            if (inputStream != null) {
+//                try {
+//                    inputStream.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
+
+//        File file = new File (DogCare.class.getResource(name).getFile());
+//        try {
+//            Image image = ImageIO.read(file);
+//            return image;
+//        }
+//        catch(Exception e) {
+//            System.err.println("Couldn't find file: " + name);
+//            return null;
+//        }
     }
 
-    public static void playAudio (String file) throws Exception
+    public static void playAudio (String name) throws Exception
     {
-        InputStream in = new FileInputStream (file);
-        AudioStream as = new AudioStream (in);
-        AudioPlayer.player.start (as);
+        File file = new File (DogCare.class.getResource(name).getFile());
+        try {
+            InputStream in = new FileInputStream (file);
+            AudioStream as = new AudioStream (in);
+            AudioPlayer.player.start (as);
+        }
+        catch(Exception e) {
+            System.err.println("Couldn't find file: " + name);
+        }
     }
 
     public static void clear ()

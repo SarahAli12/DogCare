@@ -1,3 +1,5 @@
+package Classes;
+
 import java.awt.*;
 import hsa.Console;
 import java.awt.image.BufferedImage;
@@ -15,10 +17,26 @@ public class Intro
     {
     }
 
+    public static File loadFile (String name) throws Exception
+    {
+        File file = new File (DogCare.class.getResource(name).getFile());
+        return file;
+    }
+
     public static Image loadImage (String name) throws Exception
     {
-        Image img = ImageIO.read (new File (name));
-        return img;
+//        Image img = ImageIO.read (new File (name));
+//        return img;
+
+        File file = new File (DogCare.class.getResource(name).getFile());
+        try {
+            Image image = ImageIO.read(file);
+            return image;
+        }
+        catch(Exception e) {
+            System.err.println("Couldn't find file: " + name);
+            return null;
+        }
     }
 
     public static void clear ()
