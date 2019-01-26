@@ -38,6 +38,9 @@ public class Fight {
 
   public static void main (String[] args) throws Exception {
 
+    Sound bgmusic = new Sound ("./src/Audio/bgmusicfight.wav");
+    bgmusic.loop();
+
     Actions dog = DogCare.dog;
 
   }
