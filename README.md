@@ -74,3 +74,19 @@ We should make it more complicated, with actions affecting more than 1 bar.
 - Golden
   - goldens are bigger than beagles, so I think just make it about 100 px taller? e.g. 200, 250, 300
   - again, use your judgement to determine action pic sizing, try to keep the same ratio as with beagles
+
+## Fighting
+- Moves/Controls
+  1. WASD for directions in 2D
+  2. P to attack
+  3. O for special
+  4. I to shield
+- Rules
+  1. Players starts with 100% health
+  2. Game ends when a player reaches 0% health
+  3. Attack deals 10% damage
+  4. Shield can block attack completely
+  5. Special can be triggered after 3 shields
+  6. Special deals 50% damage
+  7. Shield can block special partially (25% damage)
+  8. Specials can reflect each other

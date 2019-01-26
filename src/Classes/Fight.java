@@ -38,7 +38,7 @@ public class Fight {
 
   public static void main (String[] args) throws Exception {
 
-
+    Actions dog = DogCare.dog;
 
   }
 }
