@@ -13,9 +13,9 @@ public class Intro
     static Graphics2D g = DogCare.g;
     static Color pink = new Color (249, 199, 198);
     
-    public Intro ()
-    {
-    }
+//    public Intro ()
+//    {
+//    }
 
     public static Image loadImage (String name) throws Exception
     {

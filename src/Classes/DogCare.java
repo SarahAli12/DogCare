@@ -21,7 +21,7 @@ public class DogCare
 
     public static Image loadImage (String name) throws Exception
     {
-        Image img = ImageIO.read (new File (name));
+        Image img = ImageIO.read(new File(name));
         return img;
 
         /* Different Ways to Load Files Directly Inside ./src/Folder */
@@ -51,13 +51,13 @@ public class DogCare
 //            System.err.println("Couldn't find file: " + name);
 //            return null;
 //        }
+    }
 
 //    public static File loadFile (String name) throws Exception
 //    {
 //        File file = new File (DogCare.class.getResource(name).getFile());
 //        return file;
 //    }
-    }
 
     public static void playAudio (String name) throws Exception
     {
