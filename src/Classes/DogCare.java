@@ -150,15 +150,18 @@ public class DogCare
         Sound bgmusic = new Sound ("bgmusic.wav");
         bgmusic.loop();
 
+        Image[] images;
+        String name;
+
         int playAgain;
 
         do
         {
             clear ();
             Intro.intro ();
-            Image[] images = Intro.Adopt ();
+            images = Intro.Adopt ();
             dog = new Actions (images);
-            String name = Intro.Name ();
+            name = Intro.Name ();
 
             int intelligence = r.nextInt (25);
             int health = 50;
@@ -385,6 +388,10 @@ public class DogCare
 
         //thanks for playing
         clear ();
+
+        // FIGHT METHOD - to be relocated
+        Fight.Fight (name, images);
+
         Image sparkle = loadImage ("sparkle.png");
         playAudio ("special.wav");
         g.setFont (new Font ("Freestyle Script", Font.PLAIN, 80));
