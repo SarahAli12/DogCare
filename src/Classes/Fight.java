@@ -171,6 +171,13 @@ public class Fight {
     boolean runagain;
     Image park = loadImage("park.jpg");
 
+    // You Dog Fighter's Location (for all actions) - (x1, y1) - positionthis
+    int x1 = 100;
+    int y1 = 350;
+
+    // Enemy Fighter's Location (for all actions) - (x2, y1) - positionthis
+    int x2 = 500;
+
     // Background Music
     Sound bgmusic2 = new Sound ("bgmusicfight.wav");
     bgmusic2.loop();
@@ -195,10 +202,10 @@ public class Fight {
 //        g.drawImage(images[11], 0, 0, null);
 //        g.drawImage(images[16], 700, 0, null);
 //        c.drawImage (image, 0, 0, null);
-
-        // Fighters - positionthis
-        g.drawImage(images[14], 100, 350, null);
-        g.drawImage(images[19], 500, 350, null);
+        
+        // Fighters
+        g.drawImage(images[14], x1, y1, null);
+        g.drawImage(images[19], x2, y1, null);
         c.drawImage (image, 0, 0, null);
 
         // Health Bars
@@ -287,38 +294,44 @@ public class Fight {
       //************************************************** Animations **************************************************//
 
       if (choice == 'p' || choice == 'P') {
-        g.drawImage(images[15], 0, 0, null); // positionthis
+        g.drawImage(images[15], x1, y1, null);
         c.drawImage (image, 0, 0, null);
       }
 
       if (choice == 'o' || choice == 'O') {
-        g.drawImage(images[13], 0, 0, null); // positionthis
+        g.drawImage(images[13], x1, y1, null);
 
         Image fireball = loadImage("fireball.png");
-        g.drawImage(fireball, 0, 0, null); // positionthis
+        g.drawImage(fireball, x2, y1, null);
         c.drawImage(image, 0, 0, null);
       }
 
       if (choice == 'i' || choice == 'I') {
-        g.drawImage(images[12], 0, 0, null); // positionthis
+        g.drawImage(images[12], x1, y1, null);
+
+        Image shield = loadImage("shield.png");
+        g.drawImage(shield, x1, y1, null);
         c.drawImage (image, 0, 0, null);
       }
 
       if (enemychoice == 'p') {
-        g.drawImage(images[20], 0, 0, null); // positionthis
+        g.drawImage(images[20], x2, y1, null);
         c.drawImage (image, 0, 0, null);
       }
 
       if (enemychoice == 'o') {
-        g.drawImage(images[18], 0, 0, null); // positionthis
+        g.drawImage(images[18], x2, y1, null);
 
-        Image fireballpurple = loadImage("fireballpurple.png"); // positionthis
-        g.drawImage(fireballpurple, 0, 0, null);
+        Image fireballpurple = loadImage("fireballpurple.png");
+        g.drawImage(fireballpurple, x1, y1, null);
         c.drawImage(image, 0, 0, null);
       }
 
       if (enemychoice == 'i') {
-        g.drawImage(images[17], 0, 0, null); // positionthis
+        g.drawImage(images[17], x2, y1, null);
+
+        Image shield = loadImage("shield.png");
+        g.drawImage(shield, x2, y1, null);
         c.drawImage (image, 0, 0, null);
       }
 
